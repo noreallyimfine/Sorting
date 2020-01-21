@@ -3,7 +3,7 @@ def linear_search(arr, target):
     # TO-DO: add missing code
     for num in arr:
         if num == target:
-            return True
+            return arr.index(num)
     return -1   # not found
 
 
@@ -30,8 +30,8 @@ def binary_search(arr, target):
 
 
 # STRETCH: write a recursive implementation of Binary Search
-def binary_search_recursive(arr, target, high=0, low=len(arr)):
-    middle = (high - low) // 2
+def binary_search_recursive(arr, target):
+    middle = len(arr) // 2
 
     if len(arr) == 0:
         return -1  # array empty
@@ -39,14 +39,7 @@ def binary_search_recursive(arr, target, high=0, low=len(arr)):
     if middle == target:
         return True
     elif middle > target:
-        high = middle - 1
-        return binary_search_recursive(arr, target, high, low)
+        return binary_search_recursive(arr[:middle-1], target)
     else:
-        low = middle + 1
-        return binary_search_recursive(arr, target, high, low)
+        return binary_search_recursive(arr[middle+1:], target)
 
-
-
-
-arr = list(range(10))
-binary_search_recursive(arr, 4)
