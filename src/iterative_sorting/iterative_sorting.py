@@ -24,15 +24,13 @@ def selection_sort(arr):
 def bubble_sort(arr):
     # look at all neighbor combos in arr
     print(arr)
-    swaps = 0
-    for i in range(len(arr)-1):
-        if arr[i] > arr[i+1]:
-            arr[i], arr[i+1] = arr[i+1], arr[i]
-            swaps += 1
-    if swaps == 0:
-        return arr
-    else:
-        return bubble_sort(arr)
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            print(arr[j], arr[j+1])
+            if arr[j] > arr[i+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
 
 
 # STRETCH: implement the Count Sort function below
